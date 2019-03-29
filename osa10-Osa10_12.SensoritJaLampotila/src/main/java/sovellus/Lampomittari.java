@@ -13,10 +13,8 @@ import java.util.Random;
 
 public class Lampomittari implements Sensori {
     private boolean paalla;
-    private int lampotila;
     
-    public Lampomittari(int lampo) {
-        this.lampotila = lampo;
+    public Lampomittari() {
         this.paalla = false;
     }
 
