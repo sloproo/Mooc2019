@@ -1,18 +1,26 @@
 package maatila;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Main {
 
     public static void main(String[] args) {
         // Testaa täällä ohjelmaasi
-        Maitosailio sailio = new Maitosailio();
-sailio.otaSailiosta(100);
-sailio.lisaaSailioon(25);
-sailio.otaSailiosta(5);
-System.out.println(sailio);
+        Maatila maatila = new Maatila("Esko", new Navetta(new Maitosailio()));
+Lypsyrobotti robo = new Lypsyrobotti();
+maatila.asennaNavettaanLypsyrobotti(robo);
 
-sailio = new Maitosailio(50);
-sailio.lisaaSailioon(100);
-System.out.println(sailio);
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+maatila.lisaaLehma(new Lehma());
+
+maatila.eleleTunti();
+maatila.eleleTunti();
+
+maatila.hoidaLehmat();
+
+System.out.println(maatila);
     }
 }

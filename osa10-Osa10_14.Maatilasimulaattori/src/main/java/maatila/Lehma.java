@@ -57,6 +57,7 @@ public class Lehma implements Eleleva, Lypsava {
     @Override
     public void eleleTunti() {
        this.maara += 0.7 + r.nextDouble()*1.3;
+       if (this.maara > this.tilavuus) this.maara = this.tilavuus;
     }
 
     @Override
