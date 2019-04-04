@@ -17,16 +17,50 @@ public class Taikanelio {
 
     // toteuta nämä kolme metodia
     public ArrayList<Integer> rivienSummat() {
-        return new ArrayList<>();
+        ArrayList<Integer> palautettavatSummat = new ArrayList<>();
+        for (int rivi = 0; rivi < this.nelio.length; rivi++) {
+            int yhdenRivinSumma = 0;
+            for (int sarake = 0; sarake < this.nelio[rivi].length; sarake++) {
+                yhdenRivinSumma += this.nelio[rivi][sarake];
+            }
+            palautettavatSummat.add(yhdenRivinSumma);
+        }
+        return palautettavatSummat;
     }
 
     public ArrayList<Integer> sarakkeidenSummat() {
-        return new ArrayList<>();
+        ArrayList<Integer> palautettavatSummat = new ArrayList<>();
+        for (int sarake = 0; sarake < this.nelio.length; sarake++) {
+            int sarakkeenSumma = 0;
+            for (int rivi = 0; rivi < this.nelio[sarake].length; rivi++) {
+                sarakkeenSumma += this.nelio[rivi][sarake];
+            }
+            palautettavatSummat.add(sarakkeenSumma);
+        }
+        return palautettavatSummat;
     }
 
     public ArrayList<Integer> lavistajienSummat() {
-        return new ArrayList<>();
+        ArrayList<Integer> palautettavatSummat = new ArrayList<>();
+        int vasemmaltaAlasSumma = 0;    
+        for (int i = 0; i < this.nelio.length; i++) {
+            vasemmaltaAlasSumma += this.nelio[i][i];
+        }
+        palautettavatSummat.add(vasemmaltaAlasSumma);
+        
+        int vasemmaltaYlosSumma = 0;
+        for (int i = 0; i < this.nelio.length; i++) {
+            vasemmaltaYlosSumma += this.nelio[i][this.nelio.length - 1 - i];
+        }
+        palautettavatSummat.add(vasemmaltaYlosSumma);
+        
+        return palautettavatSummat;
     }
+    
+    public boolean onkoNollia() {
+        return annaKaikkiNumerot().contains(0);
+    }
+    
 
     // valmiit apumetodit -- älä koske näihin
     public boolean onTaikanelio() {
