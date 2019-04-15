@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import java.util.HashMap;
 import java.util.ArrayList;
 import javafx.scene.text.Font;
 
@@ -18,6 +17,8 @@ public class RistinollaSovellus extends Application {
     
     private String vuoro;
     private ArrayList<Button> napit;
+    
+    @Override
     public void start(Stage ikkuna) throws Exception {
         
         this.vuoro = "X";
