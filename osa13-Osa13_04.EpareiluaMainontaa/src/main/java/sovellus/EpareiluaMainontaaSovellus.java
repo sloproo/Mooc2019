@@ -13,14 +13,14 @@ public class EpareiluaMainontaaSovellus extends Application {
     @Override
     public void start(Stage ikkuna) {
         CategoryAxis xAkseli = new CategoryAxis();
-        NumberAxis yAkseli = new NumberAxis(77.0, 77.5, 0.1);
-        yAkseli.setTickLabelsVisible(false);
+        NumberAxis yAkseli = new NumberAxis(0.0, 77.5, 5.0);
+        yAkseli.setTickLabelsVisible(true);
         yAkseli.setLabel("Suurempi parempi!");
 
         BarChart<String, Number> pylvaskaavio = new BarChart<>(xAkseli, yAkseli);
 
         pylvaskaavio.setTitle("Liittymän nopeus");
-        pylvaskaavio.setLegendVisible(false);
+        pylvaskaavio.setLegendVisible(true);
 
         XYChart.Series asukasluvut = new XYChart.Series();
         asukasluvut.getData().add(new XYChart.Data("NDA", 77.4));
