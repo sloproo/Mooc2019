@@ -35,15 +35,24 @@ public class KollaasiSovellus extends Application {
             while (xKoordinaatti < leveys) {
 
                 Color vari = kuvanLukija.getColor(xKoordinaatti, yKoordinaatti);
-                double punainen = vari.getRed();
-                double vihrea = vari.getGreen();
-                double sininen = vari.getBlue();
+                double punainen = 1.0 - vari.getRed();
+                double vihrea = 1.0 - vari.getGreen();
+                double sininen = 1 - vari.getBlue();
                 double lapinakyvyys = vari.getOpacity();
 
                 Color uusiVari = new Color(punainen, vihrea, sininen, lapinakyvyys);
 
-                kuvanKirjoittaja.setColor(xKoordinaatti, yKoordinaatti, uusiVari);
-
+                // Jos seuraavan rivin uncommenttaa, niin alimmat kaksi pikku-
+                // negatiivia ei näy. En ymmärrä miksi mutta sou not.
+                //  kuvanKirjoittaja.setColor(xKoordinaatti, yKoordinaatti, uusiVari);
+                
+                if (xKoordinaatti % 2 == 0 && yKoordinaatti % 2 == 0) {
+                    kuvanKirjoittaja.setColor(xKoordinaatti /2 , yKoordinaatti /2, uusiVari);
+                    kuvanKirjoittaja.setColor(xKoordinaatti /2 + leveys / 2, yKoordinaatti /2, uusiVari);
+                    kuvanKirjoittaja.setColor(xKoordinaatti /2 , yKoordinaatti /2 + korkeus /2, uusiVari);
+                    kuvanKirjoittaja.setColor(xKoordinaatti /2 + leveys / 2, yKoordinaatti /2 + korkeus /2, uusiVari);
+                }
+                
                 xKoordinaatti++;
             }
 
