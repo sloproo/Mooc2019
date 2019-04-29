@@ -83,19 +83,19 @@ public class SaastolaskuriSovellus extends Application {
         
         XYChart.Series korkokuvaaja = new XYChart.Series();
         korkokuvaaja.setName("Tallennukset + korko");
-        korkokuvaaja.getData().addAll(tallennusLiuku.getValue(), korkoLiuku.getValue());
+       // korkokuvaaja.getData().addAll((Number) tallennusLiuku.getValue(), (Number) korkoLiuku.getValue());
        
         
         korkoLiuku.valueProperty().addListener((muutos, vanhaArvo, uusiArvo) -> {
             koronArvo.setText(String.valueOf(uusiArvo));
             korkokuvaaja.getData().clear();
-            korkokuvaaja.getData().addAll(laskeKorko((int) tallennusLiuku.getValue(), korkoLiuku.getValue()));
+     //       korkokuvaaja.getData().addAll((int) tallennusLiuku.getValue(), (int) korkoLiuku.getValue()));
         });
         
         viivaKaavio.setTitle("Säästölaskuri");
               
         viivaKaavio.getData().add(tallennuskuvaaja);
-        viivaKaavio.getData().add(korkokuvaaja);
+//        viivaKaavio.getData().add(korkokuvaaja);
         
                 
         Scene nakyma = new Scene(reunaRuutu);
