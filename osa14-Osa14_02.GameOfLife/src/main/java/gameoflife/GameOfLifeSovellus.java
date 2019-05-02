@@ -31,7 +31,7 @@ public class GameOfLifeSovellus extends Application {
 
         new AnimationTimer() {
             // päivitetään animaatiota noin 100 millisekunnin välein
-            private long sleepNanoseconds = 100 * 1000000;
+            private long sleepNanoseconds = 20 * 1000000;
             private long prevTime = 0;
 
             public void handle(long currentNanoTime) {

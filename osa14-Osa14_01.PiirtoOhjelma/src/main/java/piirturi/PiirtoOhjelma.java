@@ -27,6 +27,7 @@ public class PiirtoOhjelma extends Application {
         root.getChildren().add(piirtoalusta);
 
         GraphicsContext piirturi = piirtoalusta.getGraphicsContext2D();
+        piirturi.setFill(Color.BLACK);
 
         int[][] piirrettavaAlue = new int[leveys][korkeus];
 
@@ -36,6 +37,7 @@ public class PiirtoOhjelma extends Application {
             int y = (int) e.getY();
             
             // aseta piirrettävän koordinaatteihin x, y arvo 1
+            piirrettavaAlue[x][y] = 1;
         });
         
         scene.setOnMouseDragged((MouseEvent e) -> {
@@ -44,6 +46,7 @@ public class PiirtoOhjelma extends Application {
             int y = (int) e.getY();
             
             // aseta piirrettävän koordinaatteihin x, y arvo 1
+            piirrettavaAlue[x][y] = 1;
         });
 
         new AnimationTimer() {
@@ -61,6 +64,13 @@ public class PiirtoOhjelma extends Application {
                 // toteuta tänne toistolause, joka käy koko kaksiulotteisen
                 // taulukon läpi, ja piirtää jokaisen alkion kohdalla, missä
                 // arvo on 1
+                for (int rivi = 0; rivi < piirrettavaAlue.length; rivi++) {
+                    for (int sarake = 0; sarake < piirrettavaAlue[rivi].length; sarake++) {
+                        if (piirrettavaAlue[rivi][sarake] == 1) {
+                            piirturi.fillRect(rivi, sarake, 2, 2);
+                        }
+                    }
+                }
                 
 
             }

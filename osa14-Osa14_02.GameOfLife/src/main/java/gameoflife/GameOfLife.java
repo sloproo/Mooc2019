@@ -18,7 +18,7 @@ public class GameOfLife {
 
             int y = 0;
             while (y < taulukko[x].length) {
-                if (satunnaistaja.nextDouble() < 0.2) {
+                if (satunnaistaja.nextDouble() < 0.4) {
                     taulukko[x][y] = 1;
                 }
 
@@ -37,7 +37,33 @@ public class GameOfLife {
         // 4. jokainen kuollut alkio, jolla on tasan 3 naapuria muuttuu eläväksi
         // taulukossa arvo 1 kuvaa elävää alkiota, arvo 0 kuollutta alkiota
         int[][] kopio = new int[this.taulukko.length][this.taulukko[0].length];
-
+        for (int x = 0; x < taulukko.length; x++) {
+            for (int y = 0; y < taulukko[x].length; y++) {
+                if (onkoElossa(this.taulukko, x, y)) {
+                    if (elossaOleviaNaapureita(this.taulukko, x, y) < 2) {
+                        kopio[x][y] = 0;
+                        continue;
+                    }
+                    
+                    if (elossaOleviaNaapureita(this.taulukko, x, y) == 2 ||
+                            elossaOleviaNaapureita(this.taulukko, x, y) == 3) {
+                        kopio[x][y] = 1;
+                        continue;
+                    }
+                    
+                    if (elossaOleviaNaapureita(this.taulukko, x, y) >= 4) {
+                        kopio[x][y] = 0;
+                        continue;
+                    }
+                }
+                
+                if (!(onkoElossa(this.taulukko, x, y)) && 
+                    (elossaOleviaNaapureita(this.taulukko, x, y) == 3) ) {
+                    kopio[x][y] = 1;
+                }
+            }
+        }
+        this.taulukko = kopio;
     }
 
     public int[][] getTaulukko() {
@@ -49,6 +75,23 @@ public class GameOfLife {
     }
 
     public int elossaOleviaNaapureita(int[][] taulukko, int x, int y) {
-        return 0;
+        int elossaOlevia = 0;
+        for (int haettavaX = x - 1; haettavaX <= x + 1; haettavaX++) {
+            for (int haettavaY = y - 1; haettavaY <= y + 1; haettavaY++) {
+                if (onkoSisalla(taulukko, haettavaX, haettavaY)) {
+                    if (taulukko[haettavaX][haettavaY] == 1) elossaOlevia++;
+                }
+            }
+        }
+        if (taulukko[x][y] == 1) elossaOlevia--;
+        return elossaOlevia;
+    }
+    
+    public boolean onkoElossa(int[][] taulukko, int x, int y) {
+        return (taulukko[x][y] == 1);
+    }
+    
+    private boolean onkoSisalla(int[][] taulukko, int x, int y) {
+        return (x >= 0 && x < taulukko.length) && (y >= 0 && y < taulukko[x].length);
     }
 }
