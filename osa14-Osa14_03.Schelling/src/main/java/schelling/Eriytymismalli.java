@@ -71,7 +71,7 @@ public class Eriytymismalli {
 
                     this.taulukko.aseta(x, y, ryhma);
 
-                } 
+                }
             }
         }
     }
@@ -88,13 +88,6 @@ public class Eriytymismalli {
         ArrayList<Piste> tyhjat = new ArrayList<>();
         // Luo täällä lista, missä on kaikki tyhjät paikat piste-olioina.
         // Tyhjissä paikoissa on arvo 0
-        for (int x = 0; x < this.taulukko.getLeveys(); x++) {
-            for (int y = 0; y < this.taulukko.getKorkeus(); y++) {
-                if (this.taulukko.hae(x, y) == 0) {
-                    tyhjat.add(new Piste(x, y));
-                }
-            }
-        }
 
         return tyhjat;
     }
@@ -126,36 +119,9 @@ public class Eriytymismalli {
     public ArrayList<Piste> haeTyytymattomat() {
         ArrayList<Piste> tyytymattomat = new ArrayList<>();
         // Etsi täällä tyytymättömät
-        for (int x = 0; x < this.taulukko.getLeveys(); x++) {
-            for (int y = 0; y < this.taulukko.getKorkeus(); y++) {
-                if (!this.onkoTyytyvainen(x, y)) tyytymattomat.add(new Piste(x, y));
-            }
-        }
+
         return tyytymattomat;
-        
     }
-    
-    public boolean onkoTyytyvainen(int x, int y) {
-        int vieraita = 0;
-        for (int xVertailtava = x - 1; xVertailtava <= x + 1; xVertailtava++){
-            for (int yVertailtava = y - 1; yVertailtava <= y + 1; yVertailtava++){
-                if (!this.taulukko.onkoTaulukossa(xVertailtava, yVertailtava)) {
-                    vieraita++;
-                    continue;
-                }
-                if (this.taulukko.hae(xVertailtava, yVertailtava) != 
-                        this.taulukko.hae(x, y)) vieraita++;
-            }
-        }
-        return (8 - vieraita >= this.tyytyvaisyysraja);
-    }
-    
-    public void tyhjenna() {
-        for (int x = 0; x < this.taulukko.getLeveys(); x++) {
-            for (int y = 0; y < this.taulukko.getKorkeus(); y++) {
-                this.taulukko.aseta(x, y, 0);
-            }
-        }
-    }
+
 
 }
