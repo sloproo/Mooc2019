@@ -35,5 +35,9 @@ public class Taulukko {
 
         return this.taulukko[x][y];
     }
+    
+    public boolean onkoTaulukossa(int x, int y) {
+        return ((x >= 0 && x < this.leveys) && (y >= 0 && y < this.korkeus));
+    }
 
 }

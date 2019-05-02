@@ -132,9 +132,10 @@ public class SchellingSovellus extends Application {
 
         new AnimationTimer() {
             // päivitetään animaatiota noin 100 millisekunnin välein
-            private long sleepNanoseconds = 100 * 1000000;
+            private long sleepNanoseconds = 10 * 1000000;
             private long prevTime = 0;
 
+            @Override
             public void handle(long currentNanoTime) {
                 // päivitetään animaatiota noin 100 millisekunnin välein
                 if ((currentNanoTime - prevTime) < sleepNanoseconds) {
