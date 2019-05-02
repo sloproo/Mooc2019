@@ -157,10 +157,5 @@ public class Eriytymismalli {
             }
         }
     }
-    
-    public void helloWorld() {
-        System.out.println("Hello world");
-    }
-
 
 }
