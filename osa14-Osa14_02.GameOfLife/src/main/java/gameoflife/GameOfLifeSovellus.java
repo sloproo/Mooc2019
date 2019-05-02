@@ -34,6 +34,7 @@ public class GameOfLifeSovellus extends Application {
             private long sleepNanoseconds = 20 * 1000000;
             private long prevTime = 0;
 
+            @Override
             public void handle(long currentNanoTime) {
                 // päivitetään animaatiota noin 200 millisekunnin välein
                 if ((currentNanoTime - prevTime) < sleepNanoseconds) {
