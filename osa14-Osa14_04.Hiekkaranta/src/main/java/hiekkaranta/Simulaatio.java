@@ -141,9 +141,5 @@ public class Simulaatio {
         }
         return palautettava;
     }
-    
-    
-    
-
-
+        
 }
